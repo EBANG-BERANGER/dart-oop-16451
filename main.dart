@@ -1,25 +1,18 @@
 class BusCard {
   String _owner = '';
   int _balance = 0;
-
-  // Constructor (done for you)
   BusCard(String owner, int balance) {
     _owner = owner;
     _balance = balance;
   }
-
-  // EXAMPLE: getter for owner (done for you)
   String get owner {
     return _owner;
   }
 
   // TODO 1: write a getter for balance
-  // Hint: copy the style of the owner getter. Balance is an int.
   int get balance {
     return _balance;
   }
-
-  // EXAMPLE: setter for owner, with a rule (done for you)
   set owner(String newName) {
     if (newName.length < 3) {
       print('Error: name too short');
@@ -28,16 +21,13 @@ class BusCard {
     }
   }
 
-  // EXAMPLE: a method (done for you)
+  
   void showInfo() {
     print('Owner: $_owner | Balance: $_balance RWF');
   }
 
   // TODO 2: write a method topUp(int amount)
-  // Rule: only accept amounts from 500 to 50000 RWF.
-  // OK -> add amount to _balance, print 'Topped up <amount> RWF'
-  // Not OK -> print 'Error: top-up must be 500 to 50000 RWF'
-  // Hint: use if / else, like the owner setter.
+ 
   void topUp(int amount) {
     if (amount < 500 || amount > 50000) {
       print('Error: top-up must be 500 to 50000 RWF');
@@ -48,8 +38,7 @@ class BusCard {
   }
 
   // TODO 3: write a method pay(int fare)
-  // fare is more than _balance -> print 'Card declined'
-  // otherwise -> subtract fare from _balance, print 'Paid <fare> RWF'
+ 
   void pay(int fare) {
     if (fare > _balance) {
       print('Card declined');
@@ -63,24 +52,18 @@ class BusCard {
 class StudentCard extends BusCard {
   int _discount = 0;
 
-  // Constructor (done for you)
-  // ": super(owner, balance)" builds the parent BusCard first
   StudentCard(String owner, int balance, int discount) : super(owner, balance) {
     _discount = discount;
   }
 
-  // EXAMPLE: override showInfo (done for you)
   @override
   void showInfo() {
-    super.showInfo(); // run the parent's showInfo
+    super.showInfo(); 
     print('Student card: $_discount% off');
   }
 
   // TODO 4: override pay(int fare)
-  // Step 1: work out the discount: int off = fare * _discount ~/ 100;
-  // Step 2: print 'Student discount: <off> RWF'
-  // Step 3: call the PARENT's pay with (fare - off)
-  // Hint: look at how showInfo above uses @override and super.
+ 
   @override
   void pay(int fare) {
     int off = fare * _discount ~/ 100;
@@ -90,11 +73,8 @@ class StudentCard extends BusCard {
 }
 
 void main() {
-  // My numbers: D = 51, L = 1
-  // Starting balance = 1510 RWF, Bus fare = 251 RWF, Discount = 11%
-  // EXAMPLE (done for you): create a card and test the setter
-  BusCard card = BusCard('Ama', 1510); // TODO: use YOUR name and YOUR starting balance
-  card.owner = 'Al'; // refused: name too short
+  BusCard card = BusCard('Ama', 1510);
+  card.owner = 'Al'; 
   card.showInfo();
 
   // TODO 5: change the owner to your full name, then call showInfo()
