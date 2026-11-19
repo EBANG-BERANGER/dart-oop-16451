@@ -16,6 +16,10 @@ class Phone {
       _battery = value;
     }
   }
+
+  void restart() {
+    print('Restarting phone');
+  }
 }
 
 class SmartPhone extends Phone {
